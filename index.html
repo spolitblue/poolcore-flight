@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+<title>POOLCORE FLIGHT · 池核飞行</title>
+<link rel="stylesheet" href="css/ui.css">
+</head>
+<body>
+<canvas id="gl"></canvas>
+
+<!-- 顶部罗盘 + HUD -->
+<div id="hud" class="hud hidden">
+
+  <!-- 顶部罗盘 -->
+  <div class="compass" id="compass">
+    <div class="compass-strip" id="compassStrip"></div>
+    <div class="compass-fade l"></div><div class="compass-fade r"></div>
+    <div class="compass-center"></div><div class="compass-title">池核海 · POOLCORE SEA</div>
+  </div>
+
+  <!-- 左下：速度 / 高度 -->
+  <div class="panel pnl-speed">
+    <div class="lbl">流速 SPEED</div>
+    <div class="val" id="spd">0 u/s</div>
+    <div class="lbl sub">高度 ALTITUDE</div>
+    <div class="val" id="alt">0 m</div>
+  </div>
+
+  <!-- 右下：推力 -->
+  <div class="panel pnl-throttle">
+    <div class="lbl">推力 THROTTLE</div>
+    <div class="thr-track"><i id="thr"></i></div>
+    <div class="val small" id="mode">CHASE CAM</div>
+  </div>
+
+  <!-- 右上：状态 / 位置 -->
+  <div class="panel pnl-status">
+    <div class="row"><b>FPS</b><span id="fps">0</span></div>
+    <div class="row"><b>坐标</b><span id="pos">X 0  Z 0</span></div>
+    <div class="row"><b>航向</b><span id="heading">—</span></div>
+  </div>
+
+  <!-- 准星 -->
+  <div class="reticle" id="reticle">
+    <svg viewBox="0 0 64 64">
+      <circle class="r-dot" cx="32" cy="32" r="1.4"/>
+      <g class="r-brackets">
+        <path d="M16 24 L16 16 L24 16"/><path d="M40 16 L48 16 L48 24"/>
+        <path d="M48 40 L48 48 L40 48"/><path d="M24 48 L16 48 L16 40"/>
+      </g>
+    </svg>
+  </div>
+</div>
+
+<!-- 控件提示 -->
+<div id="controls" class="controls">
+  <span class="k">W/S</span>推力 <span class="k">鼠标</span>转向
+  <span class="k">A/D</span>滚转 <span class="k">Shift</span>加速
+  <span class="k">C</span>视角 <span class="k">F</span>辅助 <span class="k">R</span>重置
+</div>
+
+<!-- 点击开始 -->
+<div id="overlay" class="overlay show">
+  <div class="card">
+    <h1>池核飞行</h1>
+    <div class="sub">POOLCORE FLIGHT</div>
+    <div class="tag">无限生成 · 开阔大海 · 方块飞行器</div>
+    <div class="click">点击进入 · 鼠标锁定后开始</div>
+    <div class="keys">W/S 推力 · 鼠标转向 · A/D 滚转 · Shift 加速 · C 视角 · R 重置</div>
+  </div>
+</div>
+
+<div id="fatal" class="fatal hidden"></div>
+
+<script src="lib/three.min.js"></script>
+<script src="js/game.js"></script>
+</body>
+</html>
